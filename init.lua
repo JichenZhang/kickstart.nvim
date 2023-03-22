@@ -187,6 +187,9 @@ vim.wo.number = true
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
+-- Use relative line number
+vim.o.relativenumber = true;
+
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
@@ -303,7 +306,7 @@ require('nvim-treesitter.configs').setup {
     ensure_installed = {'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'help', 'vim'},
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-    auto_install = false,
+    auto_install = true,
 
     highlight = {
         enable = true
@@ -517,6 +520,9 @@ cmp.setup {
         name = 'luasnip'
     }}
 }
+
+-- fix treesitter win32 error
+require 'nvim-treesitter.install'.compilers = { "clang" }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
